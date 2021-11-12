@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import {
   Image,
   SafeAreaView,
@@ -11,14 +12,22 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import logo from "../../assets/logo.png";
 import COLORS from "../../consts/colors";
-import { DontHaveAcc } from "../General/DontHaveAcc";
+import { DontHaveAcc } from "../general/DontHaveAcc";
+import { login } from "../../redux/apiCalls";
 
 
 export const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(true);
+  const { isFetching, error } = useSelector((state) => state.user)
 
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    //e.preventDefault()
+    login(dispatch, { username,password});
+    navigation.navigate("Agent")
+  }
 
   return (
     <SafeAreaView style={styles.loginContainer}>
@@ -77,12 +86,14 @@ export const Login = ({ navigation }) => {
         </View>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={ user? () => navigation.navigate("Sell"): console.log("failed")}
+          onPress={handleClick}
+          disabled={isFetching}
         >
           <View style={styles.btnContainer}>
             <Text style={styles.btnTxt}>LOGIN</Text>
           </View>
         </TouchableOpacity>
+        {error && <Text>incorrect details...</Text>}
         <DontHaveAcc onPress={() => navigation.navigate("Register")} />
       </View>
     </SafeAreaView>

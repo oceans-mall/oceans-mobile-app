@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import logo from "../../assets/logo.png";
 import COLORS from "../../consts/colors";
-import { DontHaveAcc } from "../General/DontHaveAcc";
+import { DontHaveAcc } from "../general/DontHaveAcc";
 
 export const ResetPassword = ({ navigation }) => {
   return (

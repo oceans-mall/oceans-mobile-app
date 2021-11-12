@@ -10,10 +10,10 @@ import { fish, source } from "../consts/dummyData";
 
 export const Sell = ({ navigation }) => {
   const [quantity, setQuantity] = useState(0);
-  const [sourceType, setSource] = useState('--source--');
+  const [sourcetype, setSource] = useState('--source--');
   const [selectedValue, setSelectedValue] = useState('--select--');
   const [location, setLocation] = useState('')
-  const [sellQ, setSellQuantity] = useState('')
+  const [sell, setSellQuantity] = useState('')
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -132,7 +132,7 @@ export const Sell = ({ navigation }) => {
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Text style={styles.text}>Source:</Text>
               <Picker
-                sourceType={sourceType}
+                sourcetype={sourcetype}
                 onValueChange={(itemValue) =>
                   setSource(itemValue)
                 }

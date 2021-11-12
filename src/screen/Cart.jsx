@@ -7,7 +7,7 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { PrimaryButton } from "../components/General/Buttons";
+import { PrimaryButton } from "../components/general/Buttons";
 import COLORS from "../consts/colors";
 import { trades } from "../consts/dummyData";
 import { Trade } from "./Trade";
