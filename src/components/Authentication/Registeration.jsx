@@ -31,6 +31,7 @@ export const Register = ({ navigation }) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
+            
           />
           <TextInput
             placeholder="Email"

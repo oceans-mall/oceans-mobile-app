@@ -36,6 +36,13 @@ export const Agent = () => {
           )
         }}
        />
+       <Drawer.Screen name="Shop" component={Sell}
+        options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="cart-outline" size={22} color={color} />
+          )
+        }}
+       />
       <Drawer.Screen name="Profile" component={Profile}
         options={{
           drawerIcon: ({color}) => (
