@@ -2,7 +2,7 @@ import React from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import COLORS from "../consts/colors";
 import raw2 from "../assets/raw2.jpg";
-import { PrimaryButton } from "../components/General/Buttons";
+import { PrimaryButton } from "../components/general/Buttons";
 
 export const OnBoard = ({navigation}) => {
   return (

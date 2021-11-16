@@ -4,11 +4,10 @@ import { StatusBar } from "react-native";
 import COLORS from "./src/consts/colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { OnBoard } from "./src/screen/onBoard";
-import { Register } from "./src/components/Authentication/Registeration";
-import { Login } from "./src/components/Authentication/Login";
-import { ResetPassword } from "./src/components/Authentication/ResetPassword";
+import { Login } from "./src/components/authentication/Login";
+import { Register } from "./src/components/authentication/Registeration"
+import { ResetPassword } from "./src/components/authentication/ResetPassword";
 import { Service } from "./src/screen/Service";
-import { Sell } from "./src/screen/Sell";
 import { Cart } from "./src/screen/Cart";
 import { Agent } from "./src/components/agents/Drawer";
 
@@ -24,7 +23,6 @@ export default function StackNavigation() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Reset" component={ResetPassword} />
         <Stack.Screen name="Services" component={Service} />
-        <Stack.Screen name="Sell" component={Sell} />
         <Stack.Screen name='Cart' component={Cart} />
         <Stack.Screen name="Agent" component={Agent} />
       </Stack.Navigator>

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export const Settings = () => {
+export const Support = () => {
     return (
         <View>
-            <Text>Settings</Text>
+            <Text>Support</Text>
         </View>
     )
 }

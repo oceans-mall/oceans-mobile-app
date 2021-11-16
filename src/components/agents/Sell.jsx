@@ -5,8 +5,10 @@ import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import COLORS from "../consts/colors";
-import { fish, source } from "../consts/dummyData";
+import COLORS from "../../consts/colors";
+import { fish, source } from "../../consts/dummyData";
+import {PrimaryButton} from '../general/Buttons'
+
 
 export const Sell = ({ navigation }) => {
   const [quantity, setQuantity] = useState(0);
@@ -44,9 +46,9 @@ export const Sell = ({ navigation }) => {
               />
             </TouchableOpacity>
           </View>
-          <Text style={{ fontSize: 20, color: COLORS.white, fontWeight:'bold' }}>
+          {/* <Text style={{ fontSize: 20, color: COLORS.white, fontWeight:'bold' }}>
             Hello! Daniel
-          </Text>
+          </Text> */}
           {/* user container */}
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
@@ -188,7 +190,7 @@ export const Sell = ({ navigation }) => {
                 borderRadius: 10,
               }}
             >
-              <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
+              {/* <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
                 <Text
                   style={{
                     fontSize: 25,
@@ -198,7 +200,8 @@ export const Sell = ({ navigation }) => {
                 >
                   Add to Basket
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
+              <PrimaryButton onPress={() => setQuantity(quantity+1)} title="ADD TO CART" />
             </View>
           </View>
         </View>
