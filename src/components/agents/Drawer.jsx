@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Dashboard } from "./Dashboard";
 import { DrawerContent } from './DrawerContent'
 import { Sell } from './Sell'
+import { Tables } from './Table'
 import { Profile } from './Profile'
 import { Support } from "./Support";
 import { Settings } from "./Settings";
@@ -36,7 +37,7 @@ export const Agent = () => {
           )
         }}
        />
-       <Drawer.Screen name="Shop" component={Sell}
+       <Drawer.Screen name="Fisher Folks" component={Tables}
         options={{
           drawerIcon: ({color}) => (
             <Ionicons name="cart-outline" size={22} color={color} />

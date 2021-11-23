@@ -21,19 +21,28 @@ export const Chart = () => {
     ],
     datasets: [
       {
-        data: [600, 500, 800, 200, 100, 0, 150, 400, 200, 300, 700, 100],
+        data: [600, 500, 800, 200, 100, 900, 150, 400, 200, 300, 700, 100],
         strokeWidth: 3,
       },
     ],
   };
   return (
-    <View>
-      <Text style={{textAlign:'center', fontSize:20, fontWeight:'600', color:COLORS.primary}}>Monthly Trade</Text>
+    <View style={{ flex: 4 }}>
+      <Text
+        style={{
+          textAlign: "center",
+          fontSize: 15,
+          fontWeight: "600",
+          color: COLORS.primary,
+        }}
+      >
+        TRADE SUMMARY
+      </Text>
       <LineChart
         data={linedata}
         width={Dimensions.get("window").width}
-        height={280}
-         margin={10}
+        height={230}
+        margin={10}
         yAxisLabel={"$"}
         chartConfig={{
           backgroundColor: COLORS.primary,
@@ -44,6 +53,7 @@ export const Chart = () => {
         }}
         bezier
         style={{
+          flex: 4,
           margin: 8,
           borderRadius: 5,
         }}
