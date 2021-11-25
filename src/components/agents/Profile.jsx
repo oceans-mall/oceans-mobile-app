@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import COLORS from "../../consts/colors";
+import { profile } from "../../redux/apiCalls";
 
-export const Profile = ({navigation}) => {
+export const Profile = () => {
 
   const [ firstname, setFirstname ] = useState("")
   const [ lastname, setLastname ] = useState("")
@@ -11,6 +13,14 @@ export const Profile = ({navigation}) => {
   const [ location, setLocation ] = useState("")
   const [ region, setRegion ] = useState("")
 
+  const { isProfiling, error } = useSelector((state) => state.profile)
+  const dispatch = useDispatch();
+
+  const handleProfile = () => {
+    profile(dispatch, {
+      firstname, lastname, age, contact, location, region
+    })
+  }
   return (
     <SafeAreaView style={styles.loginContainer}>
       <View style={styles.login}>
@@ -31,7 +41,7 @@ export const Profile = ({navigation}) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
-            onChangeText={(e) => setFirstname(e.target.value)}
+            onChangeText={(firstname) => setFirstname(firstname)}
           />
           <TextInput
             placeholder="Lastname"
@@ -39,7 +49,7 @@ export const Profile = ({navigation}) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
-            onChangeText={(e) => setLastname(e.target.value)}
+            onChangeText={(lastname) => setLastname(lastname)}
           />
           <TextInput
             placeholder="Age"
@@ -47,7 +57,7 @@ export const Profile = ({navigation}) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
-            onChangeText={(e) => setAge(e.target.value)}
+            onChangeText={(age) => setAge(age)}
           />
           <TextInput
             placeholder="Phone Number"
@@ -56,7 +66,7 @@ export const Profile = ({navigation}) => {
             textDecorationLine="#fff"
             style={styles.textLayout}
             keyboardType='number-pad'
-            onChangeText={(e) => setContact(e.target.value)}
+            onChangeText={(contact) => setContact(contact)}
           />
           <TextInput
             placeholder="Location"
@@ -64,7 +74,7 @@ export const Profile = ({navigation}) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
-            onChangeText={(e) => setLocation(e.target.value)}
+            onChangeText={(location) => setLocation(location)}
           />
           <TextInput
             placeholder="Region"
@@ -72,17 +82,21 @@ export const Profile = ({navigation}) => {
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
             style={styles.textLayout}
-            onChangeText={(e) => setRegion(e.target.value)}
+            onChangeText={(region) => setRegion(region)}
           />
         </View>
         <TouchableOpacity
+          disabled={isProfiling}
           activeOpacity={0.8}
-          // onPress={() => navigation.navigate()}
+          onPress={handleProfile}
         >
           <View style={styles.btnContainer}>
             <Text style={styles.btnTxt}>CREATE</Text>
           </View>
         </TouchableOpacity>
+        {
+          error && <Text>Missing Details...</Text>
+        }
       </View>
     </SafeAreaView>
   );

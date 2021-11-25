@@ -8,17 +8,17 @@ export const RecentTrade = () => {
   const tableData = {
     headerOfTable: ["Id", "Name", "Date", "Amount (GHS)", "Status"],
     dataForTable: [
-      ["1", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["2", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["3", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["4", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["5", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["6", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["7", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["8", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["9", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["10", "Agbetsi Tsito", "20/11/2021", "50", "paid"],
-      ["11", "Agbetsi Tsito", "20/11/2021", "50", <Button>PAID</Button>],
+      ["1", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["2", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["3", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["4", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["5", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["6", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["7", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["8", "Agbetsi Tsito", "20/11/21", "50", "pending"],
+      ["9", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["10", "Agbetsi Tsito", "20/11/21", "50", "paid"],
+      ["11", "Agbetsi Tsito", "20/11/21", "50", "paid"],
     ],
   };
 

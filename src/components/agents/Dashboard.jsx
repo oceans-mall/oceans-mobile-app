@@ -33,7 +33,7 @@ export const Dashboard = () => {
           </View>
         </View>
         <Chart />
-        <RecentTrade />
+        {/* <RecentTrade /> */}
       </View>
     </SafeAreaView>
   );

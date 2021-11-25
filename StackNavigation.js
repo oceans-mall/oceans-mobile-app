@@ -5,7 +5,7 @@ import COLORS from "./src/consts/colors";
 import { createStackNavigator } from "@react-navigation/stack";
 import { OnBoard } from "./src/screen/onBoard";
 import { Login } from "./src/components/authentication/Login";
-import { Register } from "./src/components/authentication/Registeration"
+import { Register } from "./src/components/authentication/Register"
 import { ResetPassword } from "./src/components/authentication/ResetPassword";
 import { Service } from "./src/screen/Service";
 import { Cart } from "./src/screen/Cart";
@@ -13,7 +13,7 @@ import { Agent } from "./src/components/agents/Drawer";
 
 const Stack = createStackNavigator();
 
-export default function StackNavigation() {
+export default function StackNavigation(props) {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />

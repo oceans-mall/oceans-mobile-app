@@ -1,5 +1,7 @@
 import { loginStart, loginFailure, loginSuccess } from "./userRedux";
 import { registerSuccess, registerUser, registerFailure } from "./registerRedux";
+import { profileUser, profileSuccess, profileFailure } from "./profileRedux";
+
 import axios from "axios";
 
 export const login = async (dispatch, user) => {
@@ -21,3 +23,14 @@ export const register = async (dispatch, register) => {
         dispatch(registerFailure())
     }
 }
+
+//CREATE PROFILE
+export const profile = async (dispatch, profile) => {
+    dispatch(profileUser());
+    try {
+        const res = await axios.post("/api/profile/fisherman", profile)
+        dispatch(profileSuccess(res.data))
+    } catch (err) {
+        dispatch(profileFailure())
+    }
+} 

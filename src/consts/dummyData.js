@@ -86,11 +86,4 @@ export const services = [
       price:50,
       img:octopus
     },
-    // {
-    //   id: 5,
-    //   fishType:'Cat Fish',
-    //   quantity:10,
-    //   price:"GHS 50",
-    //   img:catfish
-    // }
   ]

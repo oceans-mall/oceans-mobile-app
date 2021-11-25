@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import {
   Image,
   SafeAreaView,
@@ -15,42 +15,28 @@ import COLORS from "../../consts/colors";
 import { DontHaveAcc } from "../general/DontHaveAcc";
 import { login } from "../../redux/apiCalls";
 
-
 export const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { isFetching, error } = useSelector((state) => state.user)
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  //GET THE USER STATE
+  const user = useSelector((state) => state.user.currentUser)
 
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
-    //e.preventDefault()
-    login(dispatch, { username,password});
-    navigation.navigate("Agent")
-  }
+  const handleClick = () => {
+    login(dispatch, { username, password });
+    //check if it is the correct user and navigate to page
+    user ? navigation.navigate("Agent") : navigation.navigate("Login")
+    console.log(`username ${username},password ${password} `)
+  };
 
   return (
     <SafeAreaView style={styles.loginContainer}>
-      <View
-        style={{
-          backgroundColor: COLORS.white,
-          borderRadius: 50,
-          padding: 10,
-          alignSelf: "flex-start",
-          margin: 5,
-        }}
-      >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons
-            name="arrow-back-outline"
-            size={20}
-            color={COLORS.primary}
-          />
-        </TouchableOpacity>
-      </View>
       <View style={styles.login}>
         <Image style={styles.logo} source={logo} alt="logo" />
-        <View>
+        <View style={{ flex: 0.6 }}>
           <Text
             style={{
               fontSize: 20,
@@ -63,7 +49,7 @@ export const Login = ({ navigation }) => {
           </Text>
           <TextInput
             placeholder="Username"
-            required="required"
+            required= {true}
             placeholderTextColor={COLORS.primary}
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
@@ -78,23 +64,23 @@ export const Login = ({ navigation }) => {
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
           />
-        </View>
-        <View style={styles.resetPswd}>
-          <TouchableOpacity onPress={() => navigation.navigate("Reset")}>
-            <Text style={styles.resetPswdText}>Forgot Password?</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={handleClick}
-          disabled={isFetching}
-        >
-          <View style={styles.btnContainer}>
-            <Text style={styles.btnTxt}>LOGIN</Text>
+          <View style={styles.resetPswd}>
+            <TouchableOpacity onPress={() => navigation.navigate("Reset")}>
+              <Text style={styles.resetPswdText}>Forgot Password?</Text>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-        {error && <Text>incorrect details...</Text>}
-        <DontHaveAcc onPress={() => navigation.navigate("Register")} />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={handleClick}
+            disabled={isFetching}
+          >
+            <View style={styles.btnContainer}>
+              <Text style={styles.btnTxt}>LOGIN</Text>
+            </View>
+          </TouchableOpacity>
+          {error && <Text style={{ color: "red",marginBottom:5,fontSize:13 }}>Incorrect details...</Text>}
+          <DontHaveAcc onPress={() => navigation.navigate("Register")} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -103,13 +89,16 @@ export const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
+    justifyContent:'center',
   },
   login: {
     flex: 1,
-    top: -15,
+    borderRadius: 10,
+    backgroundColor: COLORS.white,
+    margin: 10,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
+    shadowColor: COLORS.secondary,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -120,6 +109,7 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   logo: {
+    flex: 0.4,
     width: 400,
     height: 150,
   },
@@ -152,7 +142,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   resetPswd: {
-    alignSelf: "flex-end",
+    // alignSelf: "flex-end",
     marginRight: 25,
   },
   resetPswdText: {

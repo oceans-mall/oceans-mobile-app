@@ -37,13 +37,13 @@ export const Agent = () => {
           )
         }}
        />
-       <Drawer.Screen name="Fisher Folks" component={Tables}
+       {/* <Drawer.Screen name="Fisher Folks" component={Tables}
         options={{
           drawerIcon: ({color}) => (
             <Ionicons name="cart-outline" size={22} color={color} />
           )
         }}
-       />
+       /> */}
       <Drawer.Screen name="Profile" component={Profile}
         options={{
           drawerIcon: ({color}) => (
