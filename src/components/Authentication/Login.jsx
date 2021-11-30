@@ -18,19 +18,25 @@ import { login } from "../../redux/apiCalls";
 export const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [message, setMessage] = useState('')
   const { isFetching, error } = useSelector((state) => state.user);
 
   //GET THE USER STATE
-  const user = useSelector((state) => state.user.currentUser)
+  const user = useSelector((state) => state.user.currentUser);
 
   const dispatch = useDispatch();
 
   const handleClick = () => {
     login(dispatch, { username, password });
     //check if it is the correct user and navigate to page
-    user ? navigation.navigate("Agent") : navigation.navigate("Login")
-    console.log(`username ${username},password ${password} `)
+    navigation.navigate("Agent")
+    console.log(`username ${username},password ${password} `);
   };
+
+  // const getMessage = () => {
+  //   const status = !error ? `Error` : `Success`;
+  //   return status + message;
+  // }
 
   return (
     <SafeAreaView style={styles.loginContainer}>
@@ -49,7 +55,7 @@ export const Login = ({ navigation }) => {
           </Text>
           <TextInput
             placeholder="Username"
-            required= {true}
+            required={true}
             placeholderTextColor={COLORS.primary}
             underlineColorAndroid={"transparent"}
             textDecorationLine="#fff"
@@ -78,7 +84,9 @@ export const Login = ({ navigation }) => {
               <Text style={styles.btnTxt}>LOGIN</Text>
             </View>
           </TouchableOpacity>
-          {error && <Text style={{ color: "red",marginBottom:5,fontSize:13 }}>Incorrect details...</Text>}
+            <Text style={[styles.message,{color:error ? 'red': 'green'}]}>
+              {error && "Incorrect details"}
+            </Text>
           <DontHaveAcc onPress={() => navigation.navigate("Register")} />
         </View>
       </View>
@@ -89,7 +97,7 @@ export const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    justifyContent:'center',
+    justifyContent: "center",
   },
   login: {
     flex: 1,
@@ -150,4 +158,5 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     textDecorationLine: "underline",
   },
+  message:{ color: "red", marginBottom: 5, fontSize: 13 }
 });

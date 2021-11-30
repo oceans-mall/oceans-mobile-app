@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -25,13 +25,15 @@ export const Register = ({ navigation }) => {
 
   const user = useSelector(state => state.register.newUser)
 
-  const handleRegister = () => {
-    register(dispatch, {
-      name, email, phone, password, confirmPswd
-    })
-    user ? navigation.navigate("Login") : navigation.navigate("Register")
-  }
-
+  useEffect(() => {
+    const handleRegister = () => {
+      register(dispatch, {
+        name, email, phone, password, confirmPswd
+      })
+      user ? navigation.navigate("Login") : navigation.navigate("Register")
+    }
+    handleRegister()
+  }, [])
   return (
     <SafeAreaView style={styles.loginContainer}>
       <View style={styles.login}>
